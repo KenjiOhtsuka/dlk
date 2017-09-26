@@ -152,6 +152,10 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
         }
         return matrix
     }
+
+    operator fun unaryMinus(): Matrix {
+        return -1.0 * this
+    }
 }
 
 operator infix fun Number.times(other: Matrix): Matrix {
@@ -163,6 +167,16 @@ operator infix fun Number.div(other: Matrix): Matrix {
     other.values.forEachIndexed { rowIndex, row ->
         row.forEachIndexed { colIndex, value ->
             matrix[rowIndex, colIndex] = this.toDouble() / value
+        }
+    }
+    return matrix
+}
+
+operator infix fun Number.plus(other: Matrix): Matrix {
+    val matrix = Matrix(other.rowSize, other.colSize)
+    other.values.forEachIndexed { rowIndex, row ->
+        row.forEachIndexed { colIndex, value ->
+            matrix[rowIndex, colIndex] = this.toDouble() + value
         }
     }
     return matrix
