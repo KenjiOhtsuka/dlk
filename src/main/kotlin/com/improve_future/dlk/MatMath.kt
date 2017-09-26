@@ -22,4 +22,14 @@ object MatMath {
         }
         return matrix
     }
+
+    fun max(a: Double, v: Matrix): Matrix {
+        val matrix = Matrix(v.rowSize, v.colSize)
+        v.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[rowIndex, colIndex] = Math.max(a, value)
+            }
+        }
+        return matrix
+    }
 }
