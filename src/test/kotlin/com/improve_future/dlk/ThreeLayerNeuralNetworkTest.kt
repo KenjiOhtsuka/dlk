@@ -6,7 +6,7 @@ import kotlin.test.assertTrue
 
 class ThreeNeuralNetworkTest {
     /**
-     * 3 Neural Network (3.4 in the book)
+     * 3 Layer Neural Network (3.4 in the book)
      */
     @Test
     fun testExample() {
