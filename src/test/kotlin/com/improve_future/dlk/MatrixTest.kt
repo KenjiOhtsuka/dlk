@@ -5,10 +5,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-//operator fun Int.times(other: Matrix): Matrix {
-//    return Matrix(1,1)
-//}
-
 class MatrixTest {
     @Test
     fun testInit() {

@@ -37,6 +37,22 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
         }
     }
 
+    constructor(values: Array<Array<Double>>): this(values.size, values[0].size) {
+        values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                this[rowIndex, colIndex] = value
+            }
+        }
+    }
+
+    constructor(values: Array<Array<Int>>): this(values.size, values[0].size) {
+        values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                this[rowIndex, colIndex] = value.toDouble()
+            }
+        }
+    }
+
     constructor(values: Array<Array<Number>>): this(values.size, values[0].size) {
         values.forEachIndexed { rowIndex, row ->
             row.forEachIndexed { colIndex, value ->
