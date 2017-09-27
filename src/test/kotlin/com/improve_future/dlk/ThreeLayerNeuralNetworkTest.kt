@@ -4,7 +4,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class ThreeNeuralNetworkTest {
+class ThreeLayerNeuralNetworkTest {
     /**
      * 3 Layer Neural Network (3.4 in the book)
      */
