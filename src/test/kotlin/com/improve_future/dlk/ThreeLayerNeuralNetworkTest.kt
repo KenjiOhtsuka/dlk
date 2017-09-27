@@ -1,7 +1,6 @@
 package com.improve_future.dlk
 
 import org.junit.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class ThreeLayerNeuralNetworkTest {
