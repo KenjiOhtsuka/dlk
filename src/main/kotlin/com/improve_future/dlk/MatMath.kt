@@ -42,4 +42,15 @@ object MatMath {
         }
         return result
     }
+
+    fun max(x: Matrix): Double {
+        var maxValue: Double? = null
+        x.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                if (maxValue == null) maxValue = value
+                else maxValue = Math.max(value, maxValue!!)
+            }
+        }
+        return maxValue!!
+    }
 }

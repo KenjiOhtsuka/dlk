@@ -28,6 +28,7 @@ object ActivationFunction {
      * activation function frequently used for regression problem
      */
     fun softmaxFunction(x: Matrix): Matrix {
-        return MatMath.exp(x) / MatMath.sum(MatMath.exp(x))
+        val c: Double = MatMath.max(x)
+        return MatMath.exp(x - c) / MatMath.sum(MatMath.exp(x - c))
     }
 }

@@ -166,6 +166,31 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
         return matrix
     }
 
+    operator infix fun minus(other: Matrix): Matrix {
+        val matrix = Matrix(this.rowSize, this.colSize)
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[rowIndex, colIndex] =
+                        value - other[rowIndex, colIndex]
+            }
+        }
+        return matrix
+    }
+
+    operator infix fun minus(other: Number): Matrix {
+        return this.minus(other.toDouble())
+    }
+
+    operator infix fun minus(other: Double): Matrix {
+        val matrix = Matrix(this.rowSize, this.colSize)
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[rowIndex, colIndex] = value - other
+            }
+        }
+        return matrix
+    }
+
     operator fun div(other: Number): Matrix {
         return div(other.toDouble())
     }
