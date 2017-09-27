@@ -16,4 +16,18 @@ object ActivationFunction {
     fun stepFunction(x: Matrix): Matrix {
         return x.apply { if (it > 0) 1.0 else 0.0 }
     }
+
+    /**
+     * activation function frequently used for classification problem
+     */
+    fun identityFunction(x: Matrix): Matrix {
+        return x
+    }
+
+    /**
+     * activation function frequently used for regression problem
+     */
+    fun softmaxFunction(x: Matrix): Matrix {
+        return MatMath.exp(x) / MatMath.sum(MatMath.exp(x))
+    }
 }

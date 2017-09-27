@@ -32,4 +32,14 @@ object MatMath {
         }
         return matrix
     }
+
+    fun sum(v: Matrix): Double {
+        var result = 0.0
+        v.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                result += value
+            }
+        }
+        return result
+    }
 }

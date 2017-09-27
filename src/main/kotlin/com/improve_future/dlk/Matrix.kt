@@ -1,7 +1,5 @@
 package com.improve_future.dlk
 
-import java.lang.Math
-
 class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
     override fun iterator(): Iterator<Pair<Int, Int>> {
         return object: Iterator<Pair<Int, Int>> {
