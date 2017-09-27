@@ -156,6 +156,16 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
     operator fun unaryMinus(): Matrix {
         return -1.0 * this
     }
+
+    fun apply(block: (Double) -> Double): Matrix {
+        val matrix = Matrix(this.rowSize, this.colSize)
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[rowIndex, colIndex] = block(value)
+            }
+        }
+        return matrix
+    }
 }
 
 operator infix fun Number.times(other: Matrix): Matrix {

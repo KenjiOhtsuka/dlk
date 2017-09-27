@@ -12,4 +12,8 @@ object ActivationFunction {
     fun rectifiedLinearUnit(x: Matrix): Matrix {
         return MatMath.max(0.0, x)
     }
+
+    fun stepFunction(x: Matrix): Matrix {
+        return x.apply { if (it > 0) 1.0 else 0.0 }
+    }
 }
