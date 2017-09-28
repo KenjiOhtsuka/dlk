@@ -1,6 +1,31 @@
 package com.improve_future.dlk
 
-class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
+fun a() {
+}
+
+open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
+    class Random(rowSize: Int, colSize: Int): Matrix(rowSize, colSize) {
+        init {
+            this.values.forEachIndexed { rowIndex, row ->
+                row.forEachIndexed { colIndex, _ ->
+                    this[rowIndex, colIndex] = Math.random()
+                }
+            }
+        }
+
+        constructor(size: Int): this(size, size)
+    }
+
+    class Zero(rowSize: Int, colSize: Int): Matrix(rowSize, colSize) {
+        init {
+            this.values.forEachIndexed { rowIndex, row ->
+                row.forEachIndexed { colIndex, _ ->
+                    this[rowIndex, colIndex] = Math.random()
+                }
+            }
+        }
+    }
+
     override fun iterator(): Iterator<Pair<Int, Int>> {
         return object: Iterator<Pair<Int, Int>> {
             var rowIndex: Int = 0
@@ -26,6 +51,8 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
     }
 
     val values: Array<DoubleArray>
+
+    constructor(size: Int): this(size, size)
 
     constructor(values: Array<DoubleArray>): this(values.size, values[0].size) {
         values.forEachIndexed { rowIndex, row ->

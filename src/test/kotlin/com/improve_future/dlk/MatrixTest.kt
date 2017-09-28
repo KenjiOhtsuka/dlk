@@ -119,4 +119,26 @@ class MatrixTest {
                 "1.0000 2.0000 3.0000\n" +
                         "4.0000 5.0000 6.0000")
     }
+
+
+    class RandomTest {
+        @Test
+        fun testRandom() {
+            var a: Matrix
+
+            a = Matrix.Random(1)
+            assertEquals(1, a.rowSize)
+            assertEquals(1, a.colSize)
+            assertTrue(a[0, 0] >= 0.0)
+            assertTrue(a[0, 0] <= 1.0)
+
+            a = Matrix.Random(2, 3)
+            assertEquals(2, a.rowSize)
+            assertEquals(3, a.colSize)
+            a.forEach {
+                assertTrue(a[it.first, it.second] >= 0.0)
+                assertTrue(a[it.first, it.second] <= 1.0)
+            }
+        }
+    }
 }
