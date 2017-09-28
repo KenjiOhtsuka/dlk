@@ -126,6 +126,18 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
         return str
     }
 
+    fun transpose(): Matrix {
+        val matrix = Matrix(this.colSize, this.rowSize)
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[colIndex, rowIndex] = value
+            }
+        }
+        return matrix
+    }
+
+    fun t() = transpose()
+
     operator infix fun times(other: Matrix): Matrix {
         val matrix = Matrix(this.rowSize, other.colSize)
         this.values.forEachIndexed { rowIndex, row ->
@@ -162,6 +174,16 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
             row.forEachIndexed { colIndex, value ->
                 matrix[rowIndex, colIndex] =
                         value + other[rowIndex, colIndex]
+            }
+        }
+        return matrix
+    }
+
+    operator infix fun plus(other: Double): Matrix {
+        val matrix = Matrix(this.rowSize, this.colSize)
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[rowIndex, colIndex] = value + other
             }
         }
         return matrix

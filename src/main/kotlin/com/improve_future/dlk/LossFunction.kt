@@ -1,11 +1,12 @@
 package com.improve_future.dlk
 
 object LossFunction {
-    fun meanSquaredError(a: Matrix, b: Matrix): Double {
-        return MatMath.sum((a - b).apply { Math.pow(it, 2.0) / 2 })
+    fun meanSquaredError(y: Matrix, t: Matrix): Double {
+        return MatMath.sum((y - t).apply { Math.pow(it, 2.0) / 2 })
     }
 
-    fun crossEntropyError(a: Matrix, b: Matrix): Double {
-        return 0.0
+    fun crossEntropyError(y: Matrix, t: Matrix): Double {
+        val delta: Double = 1E-7
+        return - MatMath.sum(t * MatMath.log(y + delta).t())
     }
 }
