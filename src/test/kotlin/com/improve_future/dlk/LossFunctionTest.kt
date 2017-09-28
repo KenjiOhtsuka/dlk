@@ -7,7 +7,7 @@ class LossFunctionTest {
     val delta = 0.00000001
 
     @Test
-    fun testLossFunction() {
+    fun testMeanSquaredError() {
         val t = Matrix(arrayOf(0, 0, 1, 0, 0, 0, 0, 0, 0, 0))
         var loss: Double
 
