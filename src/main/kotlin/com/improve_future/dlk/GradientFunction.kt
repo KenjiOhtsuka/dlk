@@ -15,7 +15,26 @@ object GradientFunction {
         return numericalDiff(f, x.toDouble())
     }
 
-    fun numericalGradient(f: (Double) -> Double, x: Matrix): Matrix {
-        return x.apply { numericalDiff(f, it) }
+    fun numericalGradient(f: (Matrix) -> Double, x: Matrix): Matrix {
+        val grad = Matrix(x.colSize, x.rowSize)
+        var temp: Double
+        var left: Double
+        var right: Double
+
+        x.forEach {
+            temp = x[it.first, it.second]
+
+            x[it.first, it.second] = temp - h
+            left = f(x)
+
+            x[it.first, it.second] = temp + h
+            right = f(x)
+
+            x[it.first, it.second] = temp
+
+            grad[it.first, it.second] = (right - left) / (2 * h)
+        }
+
+        return grad
     }
 }
