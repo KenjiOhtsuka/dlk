@@ -48,4 +48,21 @@ class GradientFunctionTest {
         assertTrue(Math.abs(6.0 - grad[0, 0]) < delta)
         assertTrue(Math.abs(0.0 - grad[0, 1]) < delta)
     }
+
+    @Test
+    fun testGradientDescent() {
+        val f = fun (x: Matrix): Double {
+            return MatMath.sum(
+                    x.apply {
+                        Math.pow(it, 2.0)
+                    }
+            )
+        }
+        val x = Matrix(arrayOf(-3.0, 4.0))
+        val r = GradientFunction.gradientDescent(
+                f, x, 0.1)
+
+        assertTrue(Math.abs(-6.11110793e-10 - r[0, 0]) < Math.abs(r[0, 0]) / 10000000)
+        assertTrue(Math.abs(8.14814391e-10 - r[0, 1]) < Math.abs(r[0, 0]) / 10000000)
+    }
 }

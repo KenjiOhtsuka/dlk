@@ -37,4 +37,19 @@ object GradientFunction {
 
         return grad
     }
+
+    fun gradientDescent(
+            f: (Matrix) -> Double,
+            initialX: Matrix,
+            lr: Double = 0.01,
+            stepNumber: Int = 100
+    ): Matrix {
+        val x = initialX
+        var grad: Matrix
+        for (i in 1..stepNumber) {
+            grad = numericalGradient(f, x)
+            x -= lr * grad
+        }
+        return x
+    }
 }

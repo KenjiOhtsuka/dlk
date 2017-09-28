@@ -264,6 +264,14 @@ open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> 
         return -1.0 * this
     }
 
+    operator fun minusAssign(other: Matrix) {
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, _ ->
+                this[rowIndex, colIndex] -= other[rowIndex, colIndex]
+            }
+        }
+    }
+
     fun apply(block: (Double) -> Double): Matrix {
         val matrix = Matrix(this.rowSize, this.colSize)
         this.values.forEachIndexed { rowIndex, row ->
