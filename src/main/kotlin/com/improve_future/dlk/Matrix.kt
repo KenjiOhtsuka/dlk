@@ -20,7 +20,7 @@ open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> 
         init {
             this.values.forEachIndexed { rowIndex, row ->
                 row.forEachIndexed { colIndex, _ ->
-                    this[rowIndex, colIndex] = Math.random()
+                    this[rowIndex, colIndex] = 0.0
                 }
             }
         }

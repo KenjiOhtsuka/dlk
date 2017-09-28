@@ -151,7 +151,6 @@ class MatrixTest {
             assertEquals(1, a.rowSize)
             assertEquals(1, a.colSize)
             assertEquals(0.0, a[0, 0])
-            assertEquals(0.0, a[0, 0])
 
             a = Matrix.Zero(2, 3)
             assertEquals(2, a.rowSize)
