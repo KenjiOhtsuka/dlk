@@ -68,6 +68,7 @@ class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> {
     }
 
     constructor(values: Array<Double>): this(arrayOf(values))
+    constructor(values: Array<Int>): this(arrayOf(values))
 
     init {
         values = Array(rowSize) {
