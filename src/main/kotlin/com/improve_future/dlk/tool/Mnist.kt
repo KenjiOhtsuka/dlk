@@ -10,7 +10,7 @@ object Mnist {
             "test_label" to "t10k-labels-idx1-ubyte.gz"
     )
 
-    val datasetDir = os.path.dirname(os.path.abspath(__file__))
+    val datasetDir = ""//os.path.dirname(os.path.abspath(__file__))
 
 
     val trainNum = 60000
@@ -27,12 +27,12 @@ object Mnist {
 
         if (!force)
             // exit when the file exists
-        if os.path.exists(filePath)
-        return
+        //if os.path.exists(filePath)
+        //return
 
         print("Downloading " + fileName + " ... ")
         // download the file and save it to the path
-        urllib.request.urlretrieve(urlBase + fileName, filePath)
+        //urllib.request.urlretrieve(urlBase + fileName, filePath)
         print("Done")
     }
 
@@ -44,23 +44,23 @@ object Mnist {
         val filePath = buildPath(fileName)
 
         print("Converting " + fileName + " to NumPy Array ...")
-        with gzip . open (file_path, 'rb') as f:
-        labels = np.frombuffer(f.read(), np.uint8, offset = 8)
+        //with gzip . open (file_path, 'rb') as f:
+        //  labels = np.frombuffer(f.read(), np.uint8, offset = 8)
         print("Done")
 
-        return labels
+        //return labels
     }
 
     private fun loadImage(fileName: String) {
         val filePath = buildPath(fileName)
 
         print("Converting " + fileName + " to NumPy Array ...")
-        with gzip . open (file_path, 'rb') as f:
-        data = np.frombuffer(f.read(), np.uint8, offset = 16)
-        data = data.reshape(-1, img_size)
+        //with gzip . open (file_path, 'rb') as f:
+        //data = np.frombuffer(f.read(), np.uint8, offset = 16)
+        //data = data.reshape(-1, img_size)
         print("Done")
 
-        return data
+        //return data
     }
 
     fun _convertNumpy(): Map<String, Any> {
@@ -77,26 +77,5 @@ object Mnist {
     /*
 save_file = dataset_dir + "/mnist.pkl"
 
-
-def _load_label(file_name):
-    file_path = dataset_dir + "/" + file_name
-
-    print("Converting " + file_name + " to NumPy Array ...")
-    with gzip.open(file_path, 'rb') as f:
-            labels = np.frombuffer(f.read(), np.uint8, offset=8)
-    print("Done")
-
-    return labels
-
-def _load_img(file_name):
-    file_path = dataset_dir + "/" + file_name
-
-    print("Converting " + file_name + " to NumPy Array ...")
-    with gzip.open(file_path, 'rb') as f:
-            data = np.frombuffer(f.read(), np.uint8, offset=16)
-    data = data.reshape(-1, img_size)
-    print("Done")
-
-    return data
      */
 }
