@@ -34,16 +34,19 @@ open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> 
             var colIndex: Int = 0
 
             override fun hasNext(): Boolean {
-                return rowIndex < rowSize - 1 || colIndex < colSize - 1
+                if (rowIndex >= rowSize) return false
+                if (rowIndex < rowSize - 1) return true
+                return colIndex < colSize
             }
 
             override fun next(): Pair<Int, Int> {
+                val value = Pair(rowIndex, colIndex)
                 colIndex += 1
                 if (colIndex == colSize) {
                     colIndex = 0
                     rowIndex += 1
                 }
-                return Pair(rowIndex, colIndex)
+                return value
             }
         }
     }

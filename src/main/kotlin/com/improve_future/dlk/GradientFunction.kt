@@ -16,7 +16,7 @@ object GradientFunction {
     }
 
     fun numericalGradient(f: (Matrix) -> Double, x: Matrix): Matrix {
-        val grad = Matrix(x.colSize, x.rowSize)
+        val grad = Matrix(x.rowSize, x.colSize)
         var temp: Double
         var left: Double
         var right: Double
