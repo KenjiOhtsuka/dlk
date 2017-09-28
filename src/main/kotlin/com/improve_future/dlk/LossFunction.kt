@@ -4,4 +4,8 @@ object LossFunction {
     fun meanSquaredError(a: Matrix, b: Matrix): Double {
         return MatMath.sum((a - b).apply { Math.pow(it, 2.0) / 2 })
     }
+
+    fun crossEntropyError(a: Matrix, b: Matrix): Double {
+        return 0.0
+    }
 }
