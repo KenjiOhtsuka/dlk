@@ -24,6 +24,8 @@ open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> 
                 }
             }
         }
+
+        constructor(size: Int): this(size, size)
     }
 
     override fun iterator(): Iterator<Pair<Int, Int>> {

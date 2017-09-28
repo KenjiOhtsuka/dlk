@@ -141,4 +141,24 @@ class MatrixTest {
             }
         }
     }
+
+    class ZeroTest {
+        @Test
+        fun testZero() {
+            var a: Matrix
+
+            a = Matrix.Zero(1)
+            assertEquals(1, a.rowSize)
+            assertEquals(1, a.colSize)
+            assertEquals(0.0, a[0, 0])
+            assertEquals(0.0, a[0, 0])
+
+            a = Matrix.Zero(2, 3)
+            assertEquals(2, a.rowSize)
+            assertEquals(3, a.colSize)
+            a.forEach {
+                assertEquals(0.0, a[it.first, it.second])
+            }
+        }
+    }
 }
