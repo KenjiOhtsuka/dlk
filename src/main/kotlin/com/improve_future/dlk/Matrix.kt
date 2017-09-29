@@ -281,6 +281,16 @@ open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> 
         }
         return matrix
     }
+
+    fun clone(): Matrix {
+        val matrix = Matrix(this.rowSize, this.colSize)
+        this.values.forEachIndexed { rowIndex, row ->
+            row.forEachIndexed { colIndex, value ->
+                matrix[rowIndex, colIndex] = value
+            }
+        }
+        return matrix
+    }
 }
 
 operator infix fun Number.times(other: Matrix): Matrix {
@@ -302,6 +312,26 @@ operator infix fun Number.plus(other: Matrix): Matrix {
     other.values.forEachIndexed { rowIndex, row ->
         row.forEachIndexed { colIndex, value ->
             matrix[rowIndex, colIndex] = this.toDouble() + value
+        }
+    }
+    return matrix
+}
+
+operator infix fun Int.minus(other: Matrix): Matrix {
+    val matrix = Matrix(other.rowSize, other.colSize)
+    other.values.forEachIndexed { rowIndex, row ->
+        row.forEachIndexed { colIndex, value ->
+            matrix[rowIndex, colIndex] = value - this.toDouble()
+        }
+    }
+    return matrix
+}
+
+operator infix fun Double.minus(other: Matrix): Matrix {
+    val matrix = Matrix(other.rowSize, other.colSize)
+    other.values.forEachIndexed { rowIndex, row ->
+        row.forEachIndexed { colIndex, value ->
+            matrix[rowIndex, colIndex] = value - this.toDouble()
         }
     }
     return matrix
