@@ -221,6 +221,10 @@ open class Matrix(val rowSize: Int, val colSize: Int): Iterable<Pair<Int, Int>> 
         return matrix
     }
 
+    operator infix fun plus(other: Int): Matrix {
+        return plus(other.toDouble())
+    }
+
     operator infix fun minus(other: Matrix): Matrix {
         val matrix = Matrix(this.rowSize, this.colSize)
         this.values.forEachIndexed { rowIndex, row ->
